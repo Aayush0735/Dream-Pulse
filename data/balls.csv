@@ -1,0 +1,252 @@
+ball_idx,innings,over,ball_in_over,legal,batter,non_striker,bowler,runs_batter,runs_extras,runs_total,is_wicket,wicket_kind,player_out,team_batting,cum_runs,cum_wkts,legal_balls_bowled,target,runs_needed,balls_left,wkts_in_hand,display_over
+0,1,0,0,True,Mohammad Rizwan,Babar Azam,B Kumar,0,0,0,False,,,Pakistan,0,0,1,0,0,119,10,0.1
+1,1,0,1,True,Mohammad Rizwan,Babar Azam,B Kumar,0,0,0,False,,,Pakistan,0,0,2,0,0,118,10,0.2
+2,1,0,2,True,Mohammad Rizwan,Babar Azam,B Kumar,0,0,0,False,,,Pakistan,0,0,3,0,0,117,10,0.3
+3,1,0,3,True,Mohammad Rizwan,Babar Azam,B Kumar,0,0,0,False,,,Pakistan,0,0,4,0,0,116,10,0.4
+4,1,0,4,True,Mohammad Rizwan,Babar Azam,B Kumar,0,0,0,False,,,Pakistan,0,0,5,0,0,115,10,0.5
+5,1,0,5,False,Mohammad Rizwan,Babar Azam,B Kumar,0,1,1,False,,,Pakistan,1,0,5,0,0,115,10,0.5
+6,1,0,6,True,Mohammad Rizwan,Babar Azam,B Kumar,0,0,0,False,,,Pakistan,1,0,6,0,0,114,10,0.6
+7,1,1,0,True,Babar Azam,Mohammad Rizwan,Arshdeep Singh,0,0,0,True,lbw,Babar Azam,Pakistan,1,1,7,0,0,113,9,1.1
+8,1,1,1,True,Shan Masood,Mohammad Rizwan,Arshdeep Singh,0,0,0,False,,,Pakistan,1,1,8,0,0,112,9,1.2
+9,1,1,2,True,Shan Masood,Mohammad Rizwan,Arshdeep Singh,0,0,0,False,,,Pakistan,1,1,9,0,0,111,9,1.3
+10,1,1,3,True,Shan Masood,Mohammad Rizwan,Arshdeep Singh,0,0,0,False,,,Pakistan,1,1,10,0,0,110,9,1.4
+11,1,1,4,True,Shan Masood,Mohammad Rizwan,Arshdeep Singh,1,0,1,False,,,Pakistan,2,1,11,0,0,109,9,1.5
+12,1,1,5,True,Mohammad Rizwan,Shan Masood,Arshdeep Singh,4,0,4,False,,,Pakistan,6,1,12,0,0,108,9,1.6
+13,1,2,0,False,Shan Masood,Mohammad Rizwan,B Kumar,0,1,1,False,,,Pakistan,7,1,12,0,0,108,9,2.0
+14,1,2,1,True,Shan Masood,Mohammad Rizwan,B Kumar,0,0,0,False,,,Pakistan,7,1,13,0,0,107,9,2.1
+15,1,2,2,True,Shan Masood,Mohammad Rizwan,B Kumar,0,0,0,False,,,Pakistan,7,1,14,0,0,106,9,2.2
+16,1,2,3,True,Shan Masood,Mohammad Rizwan,B Kumar,2,0,2,False,,,Pakistan,9,1,15,0,0,105,9,2.3
+17,1,2,4,True,Shan Masood,Mohammad Rizwan,B Kumar,0,0,0,False,,,Pakistan,9,1,16,0,0,104,9,2.4
+18,1,2,5,True,Shan Masood,Mohammad Rizwan,B Kumar,1,0,1,False,,,Pakistan,10,1,17,0,0,103,9,2.5
+19,1,2,6,True,Mohammad Rizwan,Shan Masood,B Kumar,0,0,0,False,,,Pakistan,10,1,18,0,0,102,9,2.6
+20,1,3,0,True,Shan Masood,Mohammad Rizwan,Arshdeep Singh,4,0,4,False,,,Pakistan,14,1,19,0,0,101,9,3.1
+21,1,3,1,True,Shan Masood,Mohammad Rizwan,Arshdeep Singh,1,0,1,False,,,Pakistan,15,1,20,0,0,100,9,3.2
+22,1,3,2,True,Mohammad Rizwan,Shan Masood,Arshdeep Singh,0,0,0,False,,,Pakistan,15,1,21,0,0,99,9,3.3
+23,1,3,3,True,Mohammad Rizwan,Shan Masood,Arshdeep Singh,0,0,0,False,,,Pakistan,15,1,22,0,0,98,9,3.4
+24,1,3,4,True,Mohammad Rizwan,Shan Masood,Arshdeep Singh,0,0,0,False,,,Pakistan,15,1,23,0,0,97,9,3.5
+25,1,3,5,True,Mohammad Rizwan,Shan Masood,Arshdeep Singh,0,0,0,True,caught,Mohammad Rizwan,Pakistan,15,2,24,0,0,96,8,3.6
+26,1,4,0,True,Shan Masood,Iftikhar Ahmed,B Kumar,0,0,0,False,,,Pakistan,15,2,25,0,0,95,8,4.1
+27,1,4,1,True,Shan Masood,Iftikhar Ahmed,B Kumar,3,0,3,False,,,Pakistan,18,2,26,0,0,94,8,4.2
+28,1,4,2,True,Iftikhar Ahmed,Shan Masood,B Kumar,2,0,2,False,,,Pakistan,20,2,27,0,0,93,8,4.3
+29,1,4,3,True,Iftikhar Ahmed,Shan Masood,B Kumar,0,0,0,False,,,Pakistan,20,2,28,0,0,92,8,4.4
+30,1,4,4,True,Iftikhar Ahmed,Shan Masood,B Kumar,4,0,4,False,,,Pakistan,24,2,29,0,0,91,8,4.5
+31,1,4,5,True,Iftikhar Ahmed,Shan Masood,B Kumar,0,0,0,False,,,Pakistan,24,2,30,0,0,90,8,4.6
+32,1,5,0,True,Shan Masood,Iftikhar Ahmed,Mohammed Shami,0,0,0,False,,,Pakistan,24,2,31,0,0,89,8,5.1
+33,1,5,1,True,Shan Masood,Iftikhar Ahmed,Mohammed Shami,0,0,0,False,,,Pakistan,24,2,32,0,0,88,8,5.2
+34,1,5,2,True,Shan Masood,Iftikhar Ahmed,Mohammed Shami,4,0,4,False,,,Pakistan,28,2,33,0,0,87,8,5.3
+35,1,5,3,True,Shan Masood,Iftikhar Ahmed,Mohammed Shami,3,0,3,False,,,Pakistan,31,2,34,0,0,86,8,5.4
+36,1,5,4,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,0,0,False,,,Pakistan,31,2,35,0,0,85,8,5.5
+37,1,5,5,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,1,0,1,False,,,Pakistan,32,2,36,0,0,84,8,5.6
+38,1,6,0,True,Iftikhar Ahmed,Shan Masood,HH Pandya,0,0,0,False,,,Pakistan,32,2,37,0,0,83,8,6.1
+39,1,6,1,True,Iftikhar Ahmed,Shan Masood,HH Pandya,3,0,3,False,,,Pakistan,35,2,38,0,0,82,8,6.2
+40,1,6,2,True,Shan Masood,Iftikhar Ahmed,HH Pandya,0,0,0,False,,,Pakistan,35,2,39,0,0,81,8,6.3
+41,1,6,3,True,Shan Masood,Iftikhar Ahmed,HH Pandya,1,0,1,False,,,Pakistan,36,2,40,0,0,80,8,6.4
+42,1,6,4,True,Iftikhar Ahmed,Shan Masood,HH Pandya,1,0,1,False,,,Pakistan,37,2,41,0,0,79,8,6.5
+43,1,6,5,True,Shan Masood,Iftikhar Ahmed,HH Pandya,4,0,4,False,,,Pakistan,41,2,42,0,0,78,8,6.6
+44,1,7,0,False,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,1,1,False,,,Pakistan,42,2,42,0,0,78,8,7.0
+45,1,7,1,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,0,0,False,,,Pakistan,42,2,43,0,0,77,8,7.1
+46,1,7,2,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,1,1,False,,,Pakistan,43,2,44,0,0,76,8,7.2
+47,1,7,3,True,Shan Masood,Iftikhar Ahmed,Mohammed Shami,1,0,1,False,,,Pakistan,44,2,45,0,0,75,8,7.3
+48,1,7,4,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,0,0,False,,,Pakistan,44,2,46,0,0,74,8,7.4
+49,1,7,5,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,0,0,False,,,Pakistan,44,2,47,0,0,73,8,7.5
+50,1,7,6,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,0,0,False,,,Pakistan,44,2,48,0,0,72,8,7.6
+51,1,8,0,True,Shan Masood,Iftikhar Ahmed,R Ashwin,0,1,1,False,,,Pakistan,45,2,49,0,0,71,8,8.1
+52,1,8,1,True,Iftikhar Ahmed,Shan Masood,R Ashwin,0,0,0,False,,,Pakistan,45,2,50,0,0,70,8,8.2
+53,1,8,2,True,Iftikhar Ahmed,Shan Masood,R Ashwin,1,0,1,False,,,Pakistan,46,2,51,0,0,69,8,8.3
+54,1,8,3,True,Shan Masood,Iftikhar Ahmed,R Ashwin,2,0,2,False,,,Pakistan,48,2,52,0,0,68,8,8.4
+55,1,8,4,True,Shan Masood,Iftikhar Ahmed,R Ashwin,1,0,1,False,,,Pakistan,49,2,53,0,0,67,8,8.5
+56,1,8,5,True,Iftikhar Ahmed,Shan Masood,R Ashwin,1,0,1,False,,,Pakistan,50,2,54,0,0,66,8,8.6
+57,1,9,0,True,Iftikhar Ahmed,Shan Masood,HH Pandya,2,0,2,False,,,Pakistan,52,2,55,0,0,65,8,9.1
+58,1,9,1,True,Iftikhar Ahmed,Shan Masood,HH Pandya,1,0,1,False,,,Pakistan,53,2,56,0,0,64,8,9.2
+59,1,9,2,True,Shan Masood,Iftikhar Ahmed,HH Pandya,1,0,1,False,,,Pakistan,54,2,57,0,0,63,8,9.3
+60,1,9,3,True,Iftikhar Ahmed,Shan Masood,HH Pandya,4,0,4,False,,,Pakistan,58,2,58,0,0,62,8,9.4
+61,1,9,4,True,Iftikhar Ahmed,Shan Masood,HH Pandya,1,0,1,False,,,Pakistan,59,2,59,0,0,61,8,9.5
+62,1,9,5,True,Shan Masood,Iftikhar Ahmed,HH Pandya,0,1,1,False,,,Pakistan,60,2,60,0,0,60,8,9.6
+63,1,10,0,True,Shan Masood,Iftikhar Ahmed,R Ashwin,1,0,1,False,,,Pakistan,61,2,61,0,0,59,8,10.1
+64,1,10,1,True,Iftikhar Ahmed,Shan Masood,R Ashwin,0,0,0,False,,,Pakistan,61,2,62,0,0,58,8,10.2
+65,1,10,2,True,Iftikhar Ahmed,Shan Masood,R Ashwin,2,0,2,False,,,Pakistan,63,2,63,0,0,57,8,10.3
+66,1,10,3,True,Iftikhar Ahmed,Shan Masood,R Ashwin,0,0,0,False,,,Pakistan,63,2,64,0,0,56,8,10.4
+67,1,10,4,True,Iftikhar Ahmed,Shan Masood,R Ashwin,6,0,6,False,,,Pakistan,69,2,65,0,0,55,8,10.5
+68,1,10,5,True,Iftikhar Ahmed,Shan Masood,R Ashwin,1,0,1,False,,,Pakistan,70,2,66,0,0,54,8,10.6
+69,1,11,0,True,Iftikhar Ahmed,Shan Masood,AR Patel,6,0,6,False,,,Pakistan,76,2,67,0,0,53,8,11.1
+70,1,11,1,True,Iftikhar Ahmed,Shan Masood,AR Patel,0,0,0,False,,,Pakistan,76,2,68,0,0,52,8,11.2
+71,1,11,2,True,Iftikhar Ahmed,Shan Masood,AR Patel,6,0,6,False,,,Pakistan,82,2,69,0,0,51,8,11.3
+72,1,11,3,True,Iftikhar Ahmed,Shan Masood,AR Patel,6,0,6,False,,,Pakistan,88,2,70,0,0,50,8,11.4
+73,1,11,4,True,Iftikhar Ahmed,Shan Masood,AR Patel,0,0,0,False,,,Pakistan,88,2,71,0,0,49,8,11.5
+74,1,11,5,True,Iftikhar Ahmed,Shan Masood,AR Patel,3,0,3,False,,,Pakistan,91,2,72,0,0,48,8,11.6
+75,1,12,0,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,0,0,False,,,Pakistan,91,2,73,0,0,47,8,12.1
+76,1,12,1,True,Iftikhar Ahmed,Shan Masood,Mohammed Shami,0,0,0,True,lbw,Iftikhar Ahmed,Pakistan,91,3,74,0,0,46,7,12.2
+77,1,12,2,True,Shadab Khan,Shan Masood,Mohammed Shami,0,0,0,False,,,Pakistan,91,3,75,0,0,45,7,12.3
+78,1,12,3,True,Shadab Khan,Shan Masood,Mohammed Shami,4,0,4,False,,,Pakistan,95,3,76,0,0,44,7,12.4
+79,1,12,4,True,Shadab Khan,Shan Masood,Mohammed Shami,0,0,0,False,,,Pakistan,95,3,77,0,0,43,7,12.5
+80,1,12,5,True,Shadab Khan,Shan Masood,Mohammed Shami,1,0,1,False,,,Pakistan,96,3,78,0,0,42,7,12.6
+81,1,13,0,True,Shadab Khan,Shan Masood,HH Pandya,0,0,0,False,,,Pakistan,96,3,79,0,0,41,7,13.1
+82,1,13,1,True,Shadab Khan,Shan Masood,HH Pandya,0,0,0,True,caught,Shadab Khan,Pakistan,96,4,80,0,0,40,6,13.2
+83,1,13,2,True,Haider Ali,Shan Masood,HH Pandya,0,0,0,False,,,Pakistan,96,4,81,0,0,39,6,13.3
+84,1,13,3,True,Haider Ali,Shan Masood,HH Pandya,2,0,2,False,,,Pakistan,98,4,82,0,0,38,6,13.4
+85,1,13,4,True,Haider Ali,Shan Masood,HH Pandya,0,0,0,False,,,Pakistan,98,4,83,0,0,37,6,13.5
+86,1,13,5,True,Haider Ali,Shan Masood,HH Pandya,0,0,0,True,caught,Haider Ali,Pakistan,98,5,84,0,0,36,5,13.6
+87,1,14,0,True,Shan Masood,Mohammad Nawaz,R Ashwin,1,0,1,False,,,Pakistan,99,5,85,0,0,35,5,14.1
+88,1,14,1,False,Mohammad Nawaz,Shan Masood,R Ashwin,0,1,1,False,,,Pakistan,100,5,85,0,0,35,5,14.1
+89,1,14,2,True,Mohammad Nawaz,Shan Masood,R Ashwin,0,0,0,False,,,Pakistan,100,5,86,0,0,34,5,14.2
+90,1,14,3,True,Mohammad Nawaz,Shan Masood,R Ashwin,1,0,1,False,,,Pakistan,101,5,87,0,0,33,5,14.3
+91,1,14,4,True,Shan Masood,Mohammad Nawaz,R Ashwin,2,0,2,False,,,Pakistan,103,5,88,0,0,32,5,14.4
+92,1,14,5,True,Shan Masood,Mohammad Nawaz,R Ashwin,2,0,2,False,,,Pakistan,105,5,89,0,0,31,5,14.5
+93,1,14,6,True,Shan Masood,Mohammad Nawaz,R Ashwin,1,0,1,False,,,Pakistan,106,5,90,0,0,30,5,14.6
+94,1,15,0,True,Shan Masood,Mohammad Nawaz,HH Pandya,1,0,1,False,,,Pakistan,107,5,91,0,0,29,5,15.1
+95,1,15,1,True,Mohammad Nawaz,Shan Masood,HH Pandya,4,0,4,False,,,Pakistan,111,5,92,0,0,28,5,15.2
+96,1,15,2,True,Mohammad Nawaz,Shan Masood,HH Pandya,0,0,0,False,,,Pakistan,111,5,93,0,0,27,5,15.3
+97,1,15,3,True,Mohammad Nawaz,Shan Masood,HH Pandya,4,0,4,False,,,Pakistan,115,5,94,0,0,26,5,15.4
+98,1,15,4,True,Mohammad Nawaz,Shan Masood,HH Pandya,0,0,0,True,caught,Mohammad Nawaz,Pakistan,115,6,95,0,0,25,4,15.5
+99,1,15,5,True,Asif Ali,Shan Masood,HH Pandya,1,0,1,False,,,Pakistan,116,6,96,0,0,24,4,15.6
+100,1,16,0,True,Asif Ali,Shan Masood,Arshdeep Singh,1,0,1,False,,,Pakistan,117,6,97,0,0,23,4,16.1
+101,1,16,1,True,Shan Masood,Asif Ali,Arshdeep Singh,2,0,2,False,,,Pakistan,119,6,98,0,0,22,4,16.2
+102,1,16,2,True,Shan Masood,Asif Ali,Arshdeep Singh,1,0,1,False,,,Pakistan,120,6,99,0,0,21,4,16.3
+103,1,16,3,True,Asif Ali,Shan Masood,Arshdeep Singh,0,0,0,True,caught,Asif Ali,Pakistan,120,7,100,0,0,20,3,16.4
+104,1,16,4,True,Shaheen Shah Afridi,Shan Masood,Arshdeep Singh,2,0,2,False,,,Pakistan,122,7,101,0,0,19,3,16.5
+105,1,16,5,False,Shaheen Shah Afridi,Shan Masood,Arshdeep Singh,0,1,1,False,,,Pakistan,123,7,101,0,0,19,3,16.5
+106,1,16,6,True,Shaheen Shah Afridi,Shan Masood,Arshdeep Singh,2,0,2,False,,,Pakistan,125,7,102,0,0,18,3,16.6
+107,1,17,0,True,Shan Masood,Shaheen Shah Afridi,Mohammed Shami,0,0,0,False,,,Pakistan,125,7,103,0,0,17,3,17.1
+108,1,17,1,True,Shan Masood,Shaheen Shah Afridi,Mohammed Shami,4,0,4,False,,,Pakistan,129,7,104,0,0,16,3,17.2
+109,1,17,2,True,Shan Masood,Shaheen Shah Afridi,Mohammed Shami,4,0,4,False,,,Pakistan,133,7,105,0,0,15,3,17.3
+110,1,17,3,True,Shan Masood,Shaheen Shah Afridi,Mohammed Shami,0,0,0,False,,,Pakistan,133,7,106,0,0,14,3,17.4
+111,1,17,4,True,Shan Masood,Shaheen Shah Afridi,Mohammed Shami,1,0,1,False,,,Pakistan,134,7,107,0,0,13,3,17.5
+112,1,17,5,True,Shaheen Shah Afridi,Shan Masood,Mohammed Shami,1,0,1,False,,,Pakistan,135,7,108,0,0,12,3,17.6
+113,1,18,0,True,Shaheen Shah Afridi,Shan Masood,Arshdeep Singh,1,0,1,False,,,Pakistan,136,7,109,0,0,11,3,18.1
+114,1,18,1,True,Shan Masood,Shaheen Shah Afridi,Arshdeep Singh,1,0,1,False,,,Pakistan,137,7,110,0,0,10,3,18.2
+115,1,18,2,True,Shaheen Shah Afridi,Shan Masood,Arshdeep Singh,6,0,6,False,,,Pakistan,143,7,111,0,0,9,3,18.3
+116,1,18,3,True,Shaheen Shah Afridi,Shan Masood,Arshdeep Singh,4,0,4,False,,,Pakistan,147,7,112,0,0,8,3,18.4
+117,1,18,4,True,Shaheen Shah Afridi,Shan Masood,Arshdeep Singh,0,1,1,False,,,Pakistan,148,7,113,0,0,7,3,18.5
+118,1,18,5,True,Shan Masood,Shaheen Shah Afridi,Arshdeep Singh,1,0,1,False,,,Pakistan,149,7,114,0,0,6,3,18.6
+119,1,19,0,False,Shan Masood,Shaheen Shah Afridi,B Kumar,0,1,1,False,,,Pakistan,150,7,114,0,0,6,3,19.0
+120,1,19,1,True,Shan Masood,Shaheen Shah Afridi,B Kumar,1,0,1,False,,,Pakistan,151,7,115,0,0,5,3,19.1
+121,1,19,2,True,Shaheen Shah Afridi,Shan Masood,B Kumar,0,0,0,True,caught and bowled,Shaheen Shah Afridi,Pakistan,151,8,116,0,0,4,2,19.2
+122,1,19,3,True,Haris Rauf,Shan Masood,B Kumar,6,0,6,False,,,Pakistan,157,8,117,0,0,3,2,19.3
+123,1,19,4,True,Haris Rauf,Shan Masood,B Kumar,0,0,0,False,,,Pakistan,157,8,118,0,0,2,2,19.4
+124,1,19,5,True,Haris Rauf,Shan Masood,B Kumar,0,0,0,False,,,Pakistan,157,8,119,0,0,1,2,19.5
+125,1,19,6,True,Haris Rauf,Shan Masood,B Kumar,0,2,2,False,,,Pakistan,159,8,120,0,0,0,2,19.6
+126,2,0,0,True,KL Rahul,RG Sharma,Shaheen Shah Afridi,0,0,0,False,,,India,0,0,1,160,160,119,10,0.1
+127,2,0,1,True,KL Rahul,RG Sharma,Shaheen Shah Afridi,1,0,1,False,,,India,1,0,2,160,159,118,10,0.2
+128,2,0,2,True,RG Sharma,KL Rahul,Shaheen Shah Afridi,1,0,1,False,,,India,2,0,3,160,158,117,10,0.3
+129,2,0,3,True,KL Rahul,RG Sharma,Shaheen Shah Afridi,1,0,1,False,,,India,3,0,4,160,157,116,10,0.4
+130,2,0,4,True,RG Sharma,KL Rahul,Shaheen Shah Afridi,0,0,0,False,,,India,3,0,5,160,157,115,10,0.5
+131,2,0,5,True,RG Sharma,KL Rahul,Shaheen Shah Afridi,2,0,2,False,,,India,5,0,6,160,155,114,10,0.6
+132,2,1,0,True,KL Rahul,RG Sharma,Naseem Shah,0,0,0,False,,,India,5,0,7,160,155,113,10,1.1
+133,2,1,1,True,KL Rahul,RG Sharma,Naseem Shah,0,0,0,False,,,India,5,0,8,160,155,112,10,1.2
+134,2,1,2,True,KL Rahul,RG Sharma,Naseem Shah,2,0,2,False,,,India,7,0,9,160,153,111,10,1.3
+135,2,1,3,True,KL Rahul,RG Sharma,Naseem Shah,0,0,0,False,,,India,7,0,10,160,153,110,10,1.4
+136,2,1,4,True,KL Rahul,RG Sharma,Naseem Shah,0,0,0,True,bowled,KL Rahul,India,7,1,11,160,153,109,9,1.5
+137,2,1,5,True,V Kohli,RG Sharma,Naseem Shah,0,0,0,False,,,India,7,1,12,160,153,108,9,1.6
+138,2,2,0,True,RG Sharma,V Kohli,Shaheen Shah Afridi,0,0,0,False,,,India,7,1,13,160,153,107,9,2.1
+139,2,2,1,True,RG Sharma,V Kohli,Shaheen Shah Afridi,1,0,1,False,,,India,8,1,14,160,152,106,9,2.2
+140,2,2,2,True,V Kohli,RG Sharma,Shaheen Shah Afridi,0,0,0,False,,,India,8,1,15,160,152,105,9,2.3
+141,2,2,3,True,V Kohli,RG Sharma,Shaheen Shah Afridi,2,0,2,False,,,India,10,1,16,160,150,104,9,2.4
+142,2,2,4,True,V Kohli,RG Sharma,Shaheen Shah Afridi,0,0,0,False,,,India,10,1,17,160,150,103,9,2.5
+143,2,2,5,True,V Kohli,RG Sharma,Shaheen Shah Afridi,0,0,0,False,,,India,10,1,18,160,150,102,9,2.6
+144,2,3,0,True,RG Sharma,V Kohli,Haris Rauf,0,0,0,False,,,India,10,1,19,160,150,101,9,3.1
+145,2,3,1,True,RG Sharma,V Kohli,Haris Rauf,0,0,0,True,caught,RG Sharma,India,10,2,20,160,150,100,8,3.2
+146,2,3,2,True,SA Yadav,V Kohli,Haris Rauf,4,0,4,False,,,India,14,2,21,160,146,99,8,3.3
+147,2,3,3,True,SA Yadav,V Kohli,Haris Rauf,3,0,3,False,,,India,17,2,22,160,143,98,8,3.4
+148,2,3,4,True,V Kohli,SA Yadav,Haris Rauf,0,0,0,False,,,India,17,2,23,160,143,97,8,3.5
+149,2,3,5,True,V Kohli,SA Yadav,Haris Rauf,0,0,0,False,,,India,17,2,24,160,143,96,8,3.6
+150,2,4,0,True,SA Yadav,V Kohli,Naseem Shah,0,0,0,False,,,India,17,2,25,160,143,95,8,4.1
+151,2,4,1,True,SA Yadav,V Kohli,Naseem Shah,0,0,0,False,,,India,17,2,26,160,143,94,8,4.2
+152,2,4,2,True,SA Yadav,V Kohli,Naseem Shah,3,0,3,False,,,India,20,2,27,160,140,93,8,4.3
+153,2,4,3,True,V Kohli,SA Yadav,Naseem Shah,1,0,1,False,,,India,21,2,28,160,139,92,8,4.4
+154,2,4,4,True,SA Yadav,V Kohli,Naseem Shah,0,0,0,False,,,India,21,2,29,160,139,91,8,4.5
+155,2,4,5,True,SA Yadav,V Kohli,Naseem Shah,1,0,1,False,,,India,22,2,30,160,138,90,8,4.6
+156,2,5,0,True,SA Yadav,V Kohli,Haris Rauf,0,0,0,False,,,India,22,2,31,160,138,89,8,5.1
+157,2,5,1,True,SA Yadav,V Kohli,Haris Rauf,4,0,4,False,,,India,26,2,32,160,134,88,8,5.2
+158,2,5,2,True,SA Yadav,V Kohli,Haris Rauf,0,0,0,True,caught,SA Yadav,India,26,3,33,160,134,87,7,5.3
+159,2,5,3,True,AR Patel,V Kohli,Haris Rauf,2,0,2,False,,,India,28,3,34,160,132,86,7,5.4
+160,2,5,4,True,AR Patel,V Kohli,Haris Rauf,0,1,1,False,,,India,29,3,35,160,131,85,7,5.5
+161,2,5,5,True,V Kohli,AR Patel,Haris Rauf,2,0,2,False,,,India,31,3,36,160,129,84,7,5.6
+162,2,6,0,True,AR Patel,V Kohli,Shadab Khan,0,0,0,True,run out,AR Patel,India,31,4,37,160,129,83,6,6.1
+163,2,6,1,True,HH Pandya,V Kohli,Shadab Khan,0,0,0,False,,,India,31,4,38,160,129,82,6,6.2
+164,2,6,2,True,HH Pandya,V Kohli,Shadab Khan,1,0,1,False,,,India,32,4,39,160,128,81,6,6.3
+165,2,6,3,True,V Kohli,HH Pandya,Shadab Khan,0,0,0,False,,,India,32,4,40,160,128,80,6,6.4
+166,2,6,4,True,V Kohli,HH Pandya,Shadab Khan,1,0,1,False,,,India,33,4,41,160,127,79,6,6.5
+167,2,6,5,True,HH Pandya,V Kohli,Shadab Khan,0,0,0,False,,,India,33,4,42,160,127,78,6,6.6
+168,2,7,0,True,V Kohli,HH Pandya,Mohammad Nawaz,1,0,1,False,,,India,34,4,43,160,126,77,6,7.1
+169,2,7,1,True,HH Pandya,V Kohli,Mohammad Nawaz,0,0,0,False,,,India,34,4,44,160,126,76,6,7.2
+170,2,7,2,True,HH Pandya,V Kohli,Mohammad Nawaz,1,0,1,False,,,India,35,4,45,160,125,75,6,7.3
+171,2,7,3,True,V Kohli,HH Pandya,Mohammad Nawaz,1,0,1,False,,,India,36,4,46,160,124,74,6,7.4
+172,2,7,4,True,HH Pandya,V Kohli,Mohammad Nawaz,1,0,1,False,,,India,37,4,47,160,123,73,6,7.5
+173,2,7,5,True,V Kohli,HH Pandya,Mohammad Nawaz,1,0,1,False,,,India,38,4,48,160,122,72,6,7.6
+174,2,8,0,True,V Kohli,HH Pandya,Shadab Khan,1,0,1,False,,,India,39,4,49,160,121,71,6,8.1
+175,2,8,1,True,HH Pandya,V Kohli,Shadab Khan,1,0,1,False,,,India,40,4,50,160,120,70,6,8.2
+176,2,8,2,True,V Kohli,HH Pandya,Shadab Khan,0,0,0,False,,,India,40,4,51,160,120,69,6,8.3
+177,2,8,3,True,V Kohli,HH Pandya,Shadab Khan,0,0,0,False,,,India,40,4,52,160,120,68,6,8.4
+178,2,8,4,True,V Kohli,HH Pandya,Shadab Khan,0,0,0,False,,,India,40,4,53,160,120,67,6,8.5
+179,2,8,5,True,V Kohli,HH Pandya,Shadab Khan,1,0,1,False,,,India,41,4,54,160,119,66,6,8.6
+180,2,9,0,True,V Kohli,HH Pandya,Mohammad Nawaz,0,0,0,False,,,India,41,4,55,160,119,65,6,9.1
+181,2,9,1,True,V Kohli,HH Pandya,Mohammad Nawaz,1,0,1,False,,,India,42,4,56,160,118,64,6,9.2
+182,2,9,2,True,HH Pandya,V Kohli,Mohammad Nawaz,2,0,2,False,,,India,44,4,57,160,116,63,6,9.3
+183,2,9,3,True,HH Pandya,V Kohli,Mohammad Nawaz,0,0,0,False,,,India,44,4,58,160,116,62,6,9.4
+184,2,9,4,True,HH Pandya,V Kohli,Mohammad Nawaz,0,0,0,False,,,India,44,4,59,160,116,61,6,9.5
+185,2,9,5,True,HH Pandya,V Kohli,Mohammad Nawaz,1,0,1,False,,,India,45,4,60,160,115,60,6,9.6
+186,2,10,0,True,HH Pandya,V Kohli,Shadab Khan,0,0,0,False,,,India,45,4,61,160,115,59,6,10.1
+187,2,10,1,True,HH Pandya,V Kohli,Shadab Khan,4,0,4,False,,,India,49,4,62,160,111,58,6,10.2
+188,2,10,2,True,HH Pandya,V Kohli,Shadab Khan,1,0,1,False,,,India,50,4,63,160,110,57,6,10.3
+189,2,10,3,True,V Kohli,HH Pandya,Shadab Khan,1,0,1,False,,,India,51,4,64,160,109,56,6,10.4
+190,2,10,4,True,HH Pandya,V Kohli,Shadab Khan,1,0,1,False,,,India,52,4,65,160,108,55,6,10.5
+191,2,10,5,True,V Kohli,HH Pandya,Shadab Khan,2,0,2,False,,,India,54,4,66,160,106,54,6,10.6
+192,2,11,0,True,HH Pandya,V Kohli,Mohammad Nawaz,6,0,6,False,,,India,60,4,67,160,100,53,6,11.1
+193,2,11,1,True,HH Pandya,V Kohli,Mohammad Nawaz,1,0,1,False,,,India,61,4,68,160,99,52,6,11.2
+194,2,11,2,True,V Kohli,HH Pandya,Mohammad Nawaz,0,0,0,False,,,India,61,4,69,160,99,51,6,11.3
+195,2,11,3,True,V Kohli,HH Pandya,Mohammad Nawaz,6,0,6,False,,,India,67,4,70,160,93,50,6,11.4
+196,2,11,4,True,V Kohli,HH Pandya,Mohammad Nawaz,1,0,1,False,,,India,68,4,71,160,92,49,6,11.5
+197,2,11,5,True,HH Pandya,V Kohli,Mohammad Nawaz,6,0,6,False,,,India,74,4,72,160,86,48,6,11.6
+198,2,12,0,True,V Kohli,HH Pandya,Shaheen Shah Afridi,1,0,1,False,,,India,75,4,73,160,85,47,6,12.1
+199,2,12,1,True,HH Pandya,V Kohli,Shaheen Shah Afridi,2,0,2,False,,,India,77,4,74,160,83,46,6,12.2
+200,2,12,2,True,HH Pandya,V Kohli,Shaheen Shah Afridi,1,0,1,False,,,India,78,4,75,160,82,45,6,12.3
+201,2,12,3,True,V Kohli,HH Pandya,Shaheen Shah Afridi,4,0,4,False,,,India,82,4,76,160,78,44,6,12.4
+202,2,12,4,True,V Kohli,HH Pandya,Shaheen Shah Afridi,1,0,1,False,,,India,83,4,77,160,77,43,6,12.5
+203,2,12,5,True,HH Pandya,V Kohli,Shaheen Shah Afridi,0,0,0,False,,,India,83,4,78,160,77,42,6,12.6
+204,2,13,0,True,V Kohli,HH Pandya,Shadab Khan,4,0,4,False,,,India,87,4,79,160,73,41,6,13.1
+205,2,13,1,True,V Kohli,HH Pandya,Shadab Khan,1,0,1,False,,,India,88,4,80,160,72,40,6,13.2
+206,2,13,2,True,HH Pandya,V Kohli,Shadab Khan,0,0,0,False,,,India,88,4,81,160,72,39,6,13.3
+207,2,13,3,True,HH Pandya,V Kohli,Shadab Khan,1,0,1,False,,,India,89,4,82,160,71,38,6,13.4
+208,2,13,4,True,V Kohli,HH Pandya,Shadab Khan,0,0,0,False,,,India,89,4,83,160,71,37,6,13.5
+209,2,13,5,True,V Kohli,HH Pandya,Shadab Khan,1,0,1,False,,,India,90,4,84,160,70,36,6,13.6
+210,2,14,0,True,V Kohli,HH Pandya,Naseem Shah,2,0,2,False,,,India,92,4,85,160,68,35,6,14.1
+211,2,14,1,True,V Kohli,HH Pandya,Naseem Shah,1,0,1,False,,,India,93,4,86,160,67,34,6,14.2
+212,2,14,2,True,HH Pandya,V Kohli,Naseem Shah,1,0,1,False,,,India,94,4,87,160,66,33,6,14.3
+213,2,14,3,True,V Kohli,HH Pandya,Naseem Shah,4,0,4,False,,,India,98,4,88,160,62,32,6,14.4
+214,2,14,4,True,V Kohli,HH Pandya,Naseem Shah,1,0,1,False,,,India,99,4,89,160,61,31,6,14.5
+215,2,14,5,True,HH Pandya,V Kohli,Naseem Shah,1,0,1,False,,,India,100,4,90,160,60,30,6,14.6
+216,2,15,0,True,HH Pandya,V Kohli,Haris Rauf,0,0,0,False,,,India,100,4,91,160,60,29,6,15.1
+217,2,15,1,True,HH Pandya,V Kohli,Haris Rauf,1,0,1,False,,,India,101,4,92,160,59,28,6,15.2
+218,2,15,2,True,V Kohli,HH Pandya,Haris Rauf,0,0,0,False,,,India,101,4,93,160,59,27,6,15.3
+219,2,15,3,True,V Kohli,HH Pandya,Haris Rauf,1,0,1,False,,,India,102,4,94,160,58,26,6,15.4
+220,2,15,4,False,HH Pandya,V Kohli,Haris Rauf,0,3,3,False,,,India,105,4,94,160,55,26,6,15.4
+221,2,15,5,True,HH Pandya,V Kohli,Haris Rauf,0,0,0,False,,,India,105,4,95,160,55,25,6,15.5
+222,2,15,6,True,HH Pandya,V Kohli,Haris Rauf,1,0,1,False,,,India,106,4,96,160,54,24,6,15.6
+223,2,16,0,True,HH Pandya,V Kohli,Naseem Shah,1,0,1,False,,,India,107,4,97,160,53,23,6,16.1
+224,2,16,1,True,V Kohli,HH Pandya,Naseem Shah,2,0,2,False,,,India,109,4,98,160,51,22,6,16.2
+225,2,16,2,True,V Kohli,HH Pandya,Naseem Shah,0,0,0,False,,,India,109,4,99,160,51,21,6,16.3
+226,2,16,3,True,V Kohli,HH Pandya,Naseem Shah,1,0,1,False,,,India,110,4,100,160,50,20,6,16.4
+227,2,16,4,True,HH Pandya,V Kohli,Naseem Shah,0,0,0,False,,,India,110,4,101,160,50,19,6,16.5
+228,2,16,5,True,HH Pandya,V Kohli,Naseem Shah,2,0,2,False,,,India,112,4,102,160,48,18,6,16.6
+229,2,17,0,True,V Kohli,HH Pandya,Shaheen Shah Afridi,4,0,4,False,,,India,116,4,103,160,44,17,6,17.1
+230,2,17,1,False,V Kohli,HH Pandya,Shaheen Shah Afridi,0,1,1,False,,,India,117,4,103,160,43,17,6,17.1
+231,2,17,2,True,V Kohli,HH Pandya,Shaheen Shah Afridi,2,0,2,False,,,India,119,4,104,160,41,16,6,17.2
+232,2,17,3,True,V Kohli,HH Pandya,Shaheen Shah Afridi,4,0,4,False,,,India,123,4,105,160,37,15,6,17.3
+233,2,17,4,True,V Kohli,HH Pandya,Shaheen Shah Afridi,1,0,1,False,,,India,124,4,106,160,36,14,6,17.4
+234,2,17,5,True,HH Pandya,V Kohli,Shaheen Shah Afridi,1,0,1,False,,,India,125,4,107,160,35,13,6,17.5
+235,2,17,6,True,V Kohli,HH Pandya,Shaheen Shah Afridi,4,0,4,False,,,India,129,4,108,160,31,12,6,17.6
+236,2,18,0,True,HH Pandya,V Kohli,Haris Rauf,1,0,1,False,,,India,130,4,109,160,30,11,6,18.1
+237,2,18,1,True,V Kohli,HH Pandya,Haris Rauf,1,0,1,False,,,India,131,4,110,160,29,10,6,18.2
+238,2,18,2,True,HH Pandya,V Kohli,Haris Rauf,0,0,0,False,,,India,131,4,111,160,29,9,6,18.3
+239,2,18,3,True,HH Pandya,V Kohli,Haris Rauf,1,0,1,False,,,India,132,4,112,160,28,8,6,18.4
+240,2,18,4,True,V Kohli,HH Pandya,Haris Rauf,6,0,6,False,,,India,138,4,113,160,22,7,6,18.5
+241,2,18,5,True,V Kohli,HH Pandya,Haris Rauf,6,0,6,False,,,India,144,4,114,160,16,6,6,18.6
+242,2,19,0,True,HH Pandya,V Kohli,Mohammad Nawaz,0,0,0,True,caught,HH Pandya,India,144,5,115,160,16,5,5,19.1
+243,2,19,1,True,KD Karthik,V Kohli,Mohammad Nawaz,1,0,1,False,,,India,145,5,116,160,15,4,5,19.2
+244,2,19,2,True,V Kohli,KD Karthik,Mohammad Nawaz,2,0,2,False,,,India,147,5,117,160,13,3,5,19.3
+245,2,19,3,False,V Kohli,KD Karthik,Mohammad Nawaz,6,1,7,False,,,India,154,5,117,160,6,3,5,19.3
+246,2,19,4,False,V Kohli,KD Karthik,Mohammad Nawaz,0,1,1,False,,,India,155,5,117,160,5,3,5,19.3
+247,2,19,5,True,V Kohli,KD Karthik,Mohammad Nawaz,0,3,3,False,,,India,158,5,118,160,2,2,5,19.4
+248,2,19,6,True,KD Karthik,V Kohli,Mohammad Nawaz,0,0,0,True,stumped,KD Karthik,India,158,6,119,160,2,1,4,19.5
+249,2,19,7,False,R Ashwin,V Kohli,Mohammad Nawaz,0,1,1,False,,,India,159,6,119,160,1,1,4,19.5
+250,2,19,8,True,R Ashwin,V Kohli,Mohammad Nawaz,1,0,1,False,,,India,160,6,120,160,0,0,4,19.6
