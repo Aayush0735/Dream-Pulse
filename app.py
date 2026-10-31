@@ -28,7 +28,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Theme Session State ────────────────────────────────────────
+# ── State Initialization ───────────────────────────────────────
 if "theme" not in st.session_state:
     st.session_state.theme = "dark"
 if "language" not in st.session_state:
@@ -50,16 +50,27 @@ if "show_walkin_card" not in st.session_state:
 
 is_dark = (st.session_state.theme == "dark")
 
-# ── CSS Variables & Styling ────────────────────────────────────
-dark_css = """
-:root {
+
+# ── Bulletproof HTML Renderer ──────────────────────────────────
+def render_html(html_str):
+    """
+    Renders HTML in Streamlit safely.
+    Strips leading/trailing indentation from each line so Markdown
+    NEVER mistakes indented HTML for a code block (<pre><code>).
+    """
+    clean = "".join(line.strip() for line in html_str.splitlines())
+    st.markdown(clean, unsafe_allow_html=True)
+
+
+# ── CSS Variables & Global Theme Styles ────────────────────────
+dark_vars = """
     --bg-app: #0B0B0E;
     --app-gradient: radial-gradient(circle at 50% -10%, #450A10 0%, #1A0914 30%, #0D0D12 75%, #08080B 100%);
-    --card-bg: rgba(22, 22, 28, 0.78);
+    --card-bg: rgba(22, 22, 28, 0.85);
     --card-bg-solid: #17171F;
     --card-border: rgba(255, 255, 255, 0.08);
     --card-border-top: rgba(255, 255, 255, 0.16);
-    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
     --text-main: #FFFFFF;
     --text-muted: #94A3B8;
     --text-sub: #64748B;
@@ -68,22 +79,22 @@ dark_css = """
     --accent-gold: #F5B301;
     --accent-green: #10B981;
     --chase-track: #23232C;
-    --chat-bg: rgba(16, 16, 22, 0.7);
+    --chat-bg: rgba(16, 16, 22, 0.75);
     --chat-border: rgba(255, 255, 255, 0.06);
+    --btn-bg: #1A1A24;
+    --btn-text: #FFFFFF;
+    --btn-shadow: 0 2px 8px rgba(0,0,0,0.3);
     --pill-bg: #22222B;
-    --dialog-bg: #13131A;
-}
 """
 
-light_css = """
-:root {
+light_vars = """
     --bg-app: #F8FAFC;
     --app-gradient: radial-gradient(circle at 50% -10%, #FFE4E6 0%, #FFF1F2 25%, #F8FAFC 65%, #F1F5F9 100%);
-    --card-bg: rgba(255, 255, 255, 0.88);
+    --card-bg: rgba(255, 255, 255, 0.95);
     --card-bg-solid: #FFFFFF;
     --card-border: rgba(226, 232, 240, 0.95);
     --card-border-top: rgba(255, 255, 255, 1.0);
-    --card-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.06), 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+    --card-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.08);
     --text-main: #0F172A;
     --text-muted: #475569;
     --text-sub: #94A3B8;
@@ -94,18 +105,21 @@ light_css = """
     --chase-track: #E2E8F0;
     --chat-bg: #F1F5F9;
     --chat-border: #E2E8F0;
+    --btn-bg: #FFFFFF;
+    --btn-text: #0F172A;
+    --btn-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
     --pill-bg: #E2E8F0;
-    --dialog-bg: #FFFFFF;
-}
 """
 
-theme_specific_vars = dark_css if is_dark else light_css
+active_vars = dark_vars if is_dark else light_vars
 
-st.markdown(f"""
+render_html(f"""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-{theme_specific_vars}
+:root {{
+{active_vars}
+}}
 
 /* Reset Streamlit default headers/footers */
 #MainMenu {{visibility: hidden !important;}}
@@ -113,7 +127,7 @@ footer {{visibility: hidden !important;}}
 header {{visibility: hidden !important;}}
 .stDeployButton {{display: none !important;}}
 
-/* Global resets & typography */
+/* Global typography & background */
 * {{
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
     box-sizing: border-box;
@@ -126,16 +140,16 @@ header {{visibility: hidden !important;}}
     min-height: 100vh;
 }}
 
-/* Phone Chassis Constraint (Max 430px, responsive down to 390px) */
+/* Phone Chassis (Max 430px, centered) */
 .main .block-container {{
     max-width: 430px !important;
-    padding: 0.4rem 0.75rem 2rem 0.75rem !important;
+    padding: 0.35rem 0.75rem 2rem 0.75rem !important;
     margin: 0 auto !important;
 }}
 
 @media (max-width: 430px) {{
     .main .block-container {{
-        padding: 0.25rem 0.5rem 1.5rem 0.5rem !important;
+        padding: 0.25rem 0.45rem 1.5rem 0.45rem !important;
     }}
 }}
 
@@ -147,10 +161,9 @@ header {{visibility: hidden !important;}}
     border: 1px solid var(--card-border);
     border-top: 1px solid var(--card-border-top);
     border-radius: 18px;
-    padding: 14px 16px;
+    padding: 13px 15px;
     margin-bottom: 11px;
     box-shadow: var(--card-shadow);
-    transition: transform 0.2s ease, border-color 0.2s ease;
 }}
 
 .d11-card-gold {{
@@ -158,17 +171,16 @@ header {{visibility: hidden !important;}}
     backdrop-filter: blur(16px);
     border: 1.5px solid var(--accent-gold);
     border-radius: 16px;
-    padding: 12px 14px;
+    padding: 11px 13px;
     margin-bottom: 8px;
-    box-shadow: 0 4px 20px -2px rgba(245, 179, 1, 0.15);
 }}
 
-/* Header Navigation Bar */
+/* Header Navigation */
 .top-nav {{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 0 8px 0;
+    padding: 2px 0 6px 0;
 }}
 
 .brand-badge {{
@@ -180,7 +192,7 @@ header {{visibility: hidden !important;}}
 .d11-logo-text {{
     font-size: 16px;
     font-weight: 800;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.3px;
     color: var(--text-main);
     display: flex;
     align-items: center;
@@ -204,7 +216,7 @@ header {{visibility: hidden !important;}}
     color: #FFFFFF;
     font-size: 10px;
     font-weight: 800;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
     padding: 3px 9px;
     border-radius: 20px;
     display: inline-flex;
@@ -221,22 +233,22 @@ header {{visibility: hidden !important;}}
 
 /* Scoreboard Elements */
 .score-hero {{
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 800;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.6px;
     color: var(--text-main);
     font-variant-numeric: tabular-nums;
     line-height: 1.05;
 }}
 
 .score-sub {{
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--text-muted);
 }}
 
 .target-glow {{
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 800;
     color: var(--accent-gold);
     display: inline-flex;
@@ -256,7 +268,6 @@ header {{visibility: hidden !important;}}
     font-weight: 800;
     font-variant-numeric: tabular-nums;
     margin-right: 3px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }}
 .ball-0 {{ background: {"#262630" if is_dark else "#E2E8F0"}; color: var(--text-muted); }}
 .ball-1, .ball-2, .ball-3 {{ background: {"#1E1E26" if is_dark else "#F1F5F9"}; color: var(--text-main); border: 1px solid var(--card-border); }}
@@ -265,40 +276,38 @@ header {{visibility: hidden !important;}}
 .ball-W {{ background: #BE123C; color: #FFFFFF; border: 1px solid #E11D48; }}
 .ball-dot {{ background: {"#181820" if is_dark else "#E2E8F0"}; color: var(--text-sub); }}
 
-/* Sleek Glowing Chase Meter */
+/* Glowing Chase Meter */
 .chase-bar-bg {{
     width: 100%;
-    height: 9px;
+    height: 8px;
     background: var(--chase-track);
     border-radius: 6px;
     overflow: hidden;
-    margin: 6px 0 4px 0;
-    position: relative;
+    margin: 5px 0 3px 0;
 }}
 .chase-bar-fill {{
     height: 100%;
     border-radius: 6px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.4s ease;
 }}
 
-/* Alert Notification Cards */
+/* Alert Notification Box */
 .alert-box {{
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 14px;
-    padding: 10px 12px;
-    margin-bottom: 8px;
+    border-radius: 12px;
+    padding: 9px 12px;
+    margin-bottom: 7px;
     box-shadow: var(--card-shadow);
 }}
 
 /* Pills */
 .pill-chip {{
     display: inline-block;
-    padding: 3px 9px;
+    padding: 2px 8px;
     border-radius: 12px;
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.3px;
 }}
 .pill-red {{ background: rgba(225, 29, 72, 0.15); color: #FB7185; border: 1px solid rgba(225, 29, 72, 0.3); }}
 .pill-amber {{ background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }}
@@ -306,33 +315,32 @@ header {{visibility: hidden !important;}}
 .pill-blue {{ background: rgba(59, 130, 246, 0.15); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); }}
 .pill-muted {{ background: var(--pill-bg); color: var(--text-muted); }}
 
-/* Chat Message Card */
+/* Chat Message Bubbles */
 .chat-bubble {{
-    padding: 7px 11px;
-    margin: 4px 0;
-    border-radius: 12px;
+    padding: 6px 10px;
+    margin: 3px 0;
+    border-radius: 10px;
     background: var(--chat-bg);
     font-size: 12px;
     border: 1px solid var(--chat-border);
 }}
 
 .chat-bubble-pinned {{
-    padding: 7px 11px;
-    margin: 4px 0;
-    border-radius: 12px;
+    padding: 6px 10px;
+    margin: 3px 0;
+    border-radius: 10px;
     background: var(--chat-bg);
     font-size: 12px;
     border: 1.5px solid var(--accent-gold);
-    box-shadow: 0 2px 10px rgba(245, 179, 1, 0.12);
 }}
 
 /* Banter Guard */
 details.abuse-guard {{
     background: var(--chat-bg);
     border: 1px dashed var(--text-sub);
-    border-radius: 10px;
-    padding: 6px 10px;
-    margin: 4px 0;
+    border-radius: 8px;
+    padding: 5px 9px;
+    margin: 3px 0;
 }}
 details.abuse-guard summary {{
     cursor: pointer;
@@ -343,31 +351,47 @@ details.abuse-guard summary {{
     outline: none;
 }}
 
-/* Streamlit Button Tweaks */
+/* Streamlit Buttons: Clean modern pills for both themes */
 div.stButton > button {{
     border-radius: 12px !important;
     font-weight: 700 !important;
-    font-size: 13px !important;
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+    min-height: 36px !important;
     border: 1px solid var(--card-border) !important;
-    background: var(--card-bg-solid) !important;
-    color: var(--text-main) !important;
-    transition: all 0.2s ease !important;
+    background: var(--btn-bg) !important;
+    color: var(--btn-text) !important;
+    box-shadow: var(--btn-shadow) !important;
+    transition: all 0.15s ease !important;
 }}
+
 div.stButton > button:hover {{
     border-color: var(--accent-red) !important;
-    box-shadow: 0 2px 12px var(--accent-red-glow) !important;
+    color: var(--accent-red) !important;
 }}
 
 .d11-primary-btn div.stButton > button {{
     background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%) !important;
     color: #FFFFFF !important;
     border: none !important;
-    box-shadow: 0 4px 16px var(--accent-red-glow) !important;
+    box-shadow: 0 4px 14px var(--accent-red-glow) !important;
 }}
 
 .d11-primary-btn div.stButton > button:hover {{
-    filter: brightness(1.1) !important;
-    transform: translateY(-1px) !important;
+    filter: brightness(1.08) !important;
+    color: #FFFFFF !important;
+}}
+
+/* Selectbox styling */
+div[data-baseweb="select"] > div {{
+    background-color: var(--btn-bg) !important;
+    border-color: var(--card-border) !important;
+    border-radius: 10px !important;
+    font-size: 12px !important;
+}}
+div[data-baseweb="select"] span {{
+    color: var(--text-main) !important;
+    font-weight: 600 !important;
 }}
 
 /* Footer */
@@ -375,48 +399,22 @@ div.stButton > button:hover {{
     font-size: 10px;
     color: var(--text-sub);
     text-align: center;
-    padding: 14px 0 4px 0;
-    line-height: 1.6;
+    padding: 12px 0 4px 0;
+    line-height: 1.5;
 }}
 </style>
-""", unsafe_allow_html=True)
+""")
 
 
-# ── SVG Logo Helpers ───────────────────────────────────────────
+# ── Compact Inline SVG Functions (Zero newlines) ───────────────
 def get_d11_shield_svg(size=24):
-    return f"""
-    <svg width="{size}" height="{size}" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="9" fill="url(#d11Grad)"/>
-        <path d="M9 7.5H16.2C20.5 7.5 24 11 24 15.3C24 19.6 20.5 23.1 16.2 23.1H9V7.5Z" fill="white"/>
-        <path d="M12.4 11H15.8C18.2 11 20.2 13 20.2 15.4C20.2 17.8 18.2 19.8 15.8 19.8H12.4V11Z" fill="#D91E2B"/>
-        <defs>
-            <linearGradient id="d11Grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#E11D48"/>
-                <stop offset="1" stop-color="#9F1239"/>
-            </linearGradient>
-        </defs>
-    </svg>
-    """
+    return f'<svg width="{size}" height="{size}" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;display:inline-block;"><rect width="32" height="32" rx="9" fill="#E11D48"/><path d="M9 7.5H16.2C20.5 7.5 24 11 24 15.3C24 19.6 20.5 23.1 16.2 23.1H9V7.5Z" fill="white"/><path d="M12.4 11H15.8C18.2 11 20.2 13 20.2 15.4C20.2 17.8 18.2 19.8 15.8 19.8H12.4V11Z" fill="#E11D48"/></svg>'
 
 def get_team_crest_svg(team_name, size=18):
     if team_name == "India":
-        return f"""
-        <svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="11" fill="#0284C7" stroke="#38BDF8" stroke-width="1.5"/>
-            <path d="M2.5 8.5C4.5 4.5 19.5 4.5 21.5 8.5H2.5Z" fill="#F97316"/>
-            <path d="M2.5 15.5C4.5 19.5 19.5 19.5 21.5 15.5H2.5Z" fill="#16A34A"/>
-            <circle cx="12" cy="12" r="2.8" fill="#FFFFFF"/>
-            <circle cx="12" cy="12" r="1.2" fill="#0369A1"/>
-        </svg>
-        """
+        return f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;display:inline-block;"><circle cx="12" cy="12" r="11" fill="#0284C7" stroke="#38BDF8" stroke-width="1.5"/><path d="M2.5 8.5C4.5 4.5 19.5 4.5 21.5 8.5H2.5Z" fill="#F97316"/><path d="M2.5 15.5C4.5 19.5 19.5 19.5 21.5 15.5H2.5Z" fill="#16A34A"/><circle cx="12" cy="12" r="2.8" fill="#FFFFFF"/><circle cx="12" cy="12" r="1.2" fill="#0369A1"/></svg>'
     else:
-        return f"""
-        <svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="11" fill="#065F46" stroke="#10B981" stroke-width="1.5"/>
-            <path d="M13.5 6.5C9.6 7.5 7.5 11.2 8.5 15C9.5 18.5 13.5 20 16.5 18.5C14 18 11.5 15.5 11.5 12.5C11.5 9.5 13.5 7.5 13.5 6.5Z" fill="#FFFFFF"/>
-            <polygon points="16.5,8.5 17.5,10.5 19.5,10.5 18,12 18.5,14 16.5,12.8 14.5,14 15,12 13.5,10.5 15.5,10.5" fill="#FFFFFF"/>
-        </svg>
-        """
+        return f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;display:inline-block;"><circle cx="12" cy="12" r="11" fill="#065F46" stroke="#10B981" stroke-width="1.5"/><path d="M13.5 6.5C9.6 7.5 7.5 11.2 8.5 15C9.5 18.5 13.5 20 16.5 18.5C14 18 11.5 15.5 11.5 12.5C11.5 9.5 13.5 7.5 13.5 6.5Z" fill="#FFFFFF"/><polygon points="16.5,8.5 17.5,10.5 19.5,10.5 18,12 18.5,14 16.5,12.8 14.5,14 15,12 13.5,10.5 15.5,10.5" fill="#FFFFFF"/></svg>'
 
 
 # ── Load cached data ──────────────────────────────────────────
@@ -437,7 +435,6 @@ def load_data():
 balls, match_data, stars, chat_data, vibes_data, walkins_data, alerts_cache = load_data()
 all_star_names = [p["name"] for p in stars["batters"]] + [p["name"] for p in stars["bowlers"]]
 
-# Compute tension with user selected favourite player
 @st.cache_data
 def get_tensions(fav_player):
     return compute_tension(balls, fav_player)
@@ -525,38 +522,34 @@ def show_walkin_modal(walkin, snap_over):
     room_mood = walkin.get("room_mood", "Hyped")
     join_line = walkin.get("join_line", "Jump in!")
 
-    st.markdown(f"""
+    render_html(f"""
     <div style="padding:4px 0">
-        <div style="font-size:19px;font-weight:800;color:var(--text-main);margin-bottom:6px">{headline}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--text-main);margin-bottom:6px">{headline}</div>
         <div style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-bottom:10px">{story}</div>
-        
-        <div style="margin-bottom:10px;background:var(--chat-bg);padding:9px 12px;border-radius:12px;border-left:3px solid var(--accent-gold)">
+        <div style="margin-bottom:10px;background:var(--chat-bg);padding:8px 12px;border-radius:10px;border-left:3px solid var(--accent-gold)">
             <span style="font-size:10px;font-weight:800;color:var(--accent-gold);text-transform:uppercase">What Matters Now</span>
             <div style="font-size:12px;color:var(--text-main);font-weight:600;margin-top:2px">{what_matters}</div>
         </div>
-
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
             <span class="pill-chip pill-blue">👀 {watch_player.get("name", "")}: {watch_player.get("why", "")}</span>
             <span class="pill-chip pill-amber">🎭 Room Mood: {room_mood}</span>
         </div>
-
-        <div style="font-size:13px;color:var(--text-main);font-weight:800;margin-bottom:14px">{join_line}</div>
-
-        <div style="display:flex;justify-content:space-between;color:var(--text-sub);font-size:10px;margin-bottom:10px">
+        <div style="font-size:13px;color:var(--text-main);font-weight:800;margin-bottom:12px">{join_line}</div>
+        <div style="display:flex;justify-content:space-between;color:var(--text-sub);font-size:10px;margin-bottom:8px">
             <span>📖 Read in 20 seconds</span>
             <span>as of over {snap_over}</span>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     st.markdown('<div class="d11-primary-btn">', unsafe_allow_html=True)
     if st.button("🏏 Join Watch-Along Stream", key="modal_join_btn", use_container_width=True):
-        st.toast("🎉 Joining the watch-along stream! (demo)", icon="🏏")
+        st.toast("🎉 Joining watch-along stream! (demo)", icon="🏏")
     st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ── A. Branded Top Navigation ──────────────────────────────────
-st.markdown(f"""
+render_html(f"""
 <div class="top-nav">
     <div class="brand-badge">
         {get_d11_shield_svg(26)}
@@ -567,9 +560,9 @@ st.markdown(f"""
     </div>
     <div class="live-pulse-pill">● LIVE REPLAY</div>
 </div>
-""", unsafe_allow_html=True)
+""")
 
-# Theme and Language Toggle Bar
+# Theme and Language Toggle Controls
 col_theme, col_lang_ctrl = st.columns([1, 1])
 with col_theme:
     selected_theme = st.selectbox(
@@ -604,49 +597,49 @@ current_state = state_at(bidx, balls, tensions, moments)
 batting_team = current_ball["team_batting"]
 bowling_team = "India" if batting_team == "Pakistan" else "Pakistan"
 
-st.markdown('<div class="d11-card">', unsafe_allow_html=True)
+render_html('<div class="d11-card">')
 
 c_left, c_right = st.columns([1, 1])
 with c_left:
-    st.markdown(f'''
-    <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+    render_html(f"""
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
         {get_team_crest_svg(batting_team, 18)}
         <span style="font-size:14px;font-weight:800;color:var(--text-main)">{batting_team}</span>
-        <span class="pill-chip pill-red" style="font-size:9px;padding:1px 6px">BATTING</span>
+        <span class="pill-chip pill-red" style="font-size:9px;padding:1px 6px">BAT</span>
     </div>
     <div class="score-hero">{current_ball["cum_runs"]}/{current_ball["cum_wkts"]}</div>
     <div class="score-sub">Overs: {current_ball["display_over"]} (Inn {current_ball["innings"]})</div>
-    ''', unsafe_allow_html=True)
+    """)
 
 with c_right:
     if current_ball["innings"] == 2:
-        st.markdown(f'''
+        render_html(f"""
         <div class="target-glow">🎯 Target: {current_ball["target"]}</div>
         <div style="font-size:12px;font-weight:700;color:var(--text-main)">Need {current_ball["runs_needed"]} off {current_ball["balls_left"]}b</div>
         <div class="score-sub" style="margin-top:2px">CRR: {current_state["crr"]} | RRR: {current_state.get("rrr", "-")}</div>
-        ''', unsafe_allow_html=True)
+        """)
     else:
         proj = current_state.get("projected_score", "")
-        st.markdown(f'''
+        render_html(f"""
         <div class="target-glow">📊 Projected: {proj}</div>
         <div class="score-sub" style="margin-top:2px">CRR: {current_state["crr"]}</div>
         <div class="score-sub">Balls left: {current_ball["balls_left"]}</div>
-        ''', unsafe_allow_html=True)
+        """)
 
-# Last 12 deliveries chips
+# Last 12 delivery chips
 last_12 = current_state.get("last_12", [])
-chips_html = ''.join([get_ball_chip_html(b) for b in last_12])
-st.markdown(f'<div style="margin-top:9px;display:flex;align-items:center;gap:1px;overflow-x:auto;padding-bottom:2px">{chips_html}</div>', unsafe_allow_html=True)
+chips_html = "".join([get_ball_chip_html(b) for b in last_12])
+render_html(f'<div style="margin-top:9px;display:flex;align-items:center;gap:1px;overflow-x:auto;padding-bottom:2px">{chips_html}</div>')
 
-# Chase meter (second innings)
+# Chase meter (innings 2)
 if current_ball["innings"] == 2 and current_state.get("chase_meter") is not None:
     cm_pct = current_state["chase_meter"]
     grad = get_chase_gradient(cm_pct)
-    st.markdown(f'''
+    render_html(f"""
     <div style="margin-top:10px">
         <div style="display:flex;justify-content:space-between;align-items:center">
             <span style="font-size:11px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px">Chase Meter</span>
-            <span style="font-size:14px;font-weight:800;color:var(--text-main)">{cm_pct:.0f}%</span>
+            <span style="font-size:13px;font-weight:800;color:var(--text-main)">{cm_pct:.0f}%</span>
         </div>
         <div class="chase-bar-bg">
             <div class="chase-bar-fill" style="width:{cm_pct}%;background:{grad}"></div>
@@ -656,22 +649,22 @@ if current_ball["innings"] == 2 and current_state.get("chase_meter") is not None
             <span>{batting_team}</span>
         </div>
     </div>
-    ''', unsafe_allow_html=True)
+    """)
 
-st.markdown('</div>', unsafe_allow_html=True)
+render_html('</div>')
 
 
-# ── C. Match Clock Replay Control ──────────────────────────────
-st.markdown('<div class="d11-card">', unsafe_allow_html=True)
+# ── C. Match Clock Replay Controls ─────────────────────────────
+render_html('<div class="d11-card">')
 inn_label = f"Innings {current_ball['innings']}"
 phase_label = current_state.get("phase", "")
 
-st.markdown(f'''
+render_html(f"""
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
     <span style="font-size:11px;font-weight:800;color:var(--text-muted);letter-spacing:0.6px;text-transform:uppercase">⏱ MATCH CLOCK</span>
     <span class="pill-chip pill-muted">{inn_label} • {current_ball["display_over"]} ov • {phase_label}</span>
 </div>
-''', unsafe_allow_html=True)
+""")
 
 new_idx = st.slider(
     f"{inn_label}, {current_ball['display_over']} ov",
@@ -704,7 +697,7 @@ with b3:
         st.session_state.speed = speeds[(idx_spd + 1) % len(speeds)]
         st.rerun()
 with b4:
-    if st.button("🎯 Next", help="Next big turning point"):
+    if st.button("🎯 Next", help="Next big moment"):
         for m in moments:
             if m["ball_idx"] > st.session_state.ball_idx:
                 st.session_state.ball_idx = m["ball_idx"]
@@ -734,19 +727,18 @@ with col_q2:
         st.session_state.playing = False
         st.rerun()
 
-st.markdown('</div>', unsafe_allow_html=True)
+render_html('</div>')
 
 
-# ── D. Tension Card (Feature: Wake Me When It Matters) ──────────
-st.markdown('<div class="d11-card">', unsafe_allow_html=True)
-st.markdown('''
+# ── D. Tension Card (Wake Me When It Matters) ──────────────────
+render_html('<div class="d11-card">')
+render_html("""
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
     <span style="font-size:11px;font-weight:800;color:var(--text-muted);letter-spacing:0.6px;text-transform:uppercase">⚡ WAKE ME WHEN IT MATTERS</span>
     <span class="pill-chip pill-red">Tension Radar</span>
 </div>
-''', unsafe_allow_html=True)
+""")
 
-# Plotly Tension Chart
 chart_x = list(range(bidx + 1))
 chart_y = smoothed[:bidx + 1]
 
@@ -775,7 +767,7 @@ fig.add_trace(go.Scatter(
     name='Tension',
 ))
 
-# Key Moment Pins
+# Numbered Key Moment Pins
 for m in moments:
     if m["ball_idx"] <= bidx:
         fig.add_trace(go.Scatter(
@@ -810,8 +802,7 @@ fig.update_layout(
 )
 st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
 
-# Fan Preferences
-st.markdown('<div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:4px">Fan Alert Preferences</div>', unsafe_allow_html=True)
+render_html('<div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:4px">Fan Alert Preferences</div>')
 col_team, col_player, col_sens = st.columns(3)
 with col_team:
     fav_team = st.selectbox("Fav Team", ["India", "Pakistan"], index=0 if st.session_state.fav_team == "India" else 1, key="fav_team_key", label_visibility="collapsed")
@@ -829,16 +820,16 @@ with col_sens:
         st.session_state.sensitivity = sensitivity
         st.rerun()
 
-st.markdown('</div>', unsafe_allow_html=True)
+render_html('</div>')
 
 
 # ── E. Smart Alert Feed ─────────────────────────────────────────
-st.markdown('<div class="d11-card">', unsafe_allow_html=True)
-st.markdown('''
+render_html('<div class="d11-card">')
+render_html("""
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
     <span style="font-size:11px;font-weight:800;color:var(--text-muted);letter-spacing:0.6px;text-transform:uppercase">🔔 SMART ALERTS FEED</span>
 </div>
-''', unsafe_allow_html=True)
+""")
 
 active_alerts = [a for a in current_alerts if a["ball_idx"] <= bidx]
 latest_alerts = active_alerts[-5:] if active_alerts else []
@@ -851,17 +842,17 @@ skip_pct = round(100 * below_th / total_so_far) if total_so_far > 0 else 0
 
 c_s1, c_s2 = st.columns(2)
 with c_s1:
-    st.markdown(f'<div class="pill-chip pill-red">Alerts sent: {len(active_alerts)}</div>', unsafe_allow_html=True)
+    render_html(f'<div class="pill-chip pill-red">Alerts sent: {len(active_alerts)}</div>')
 with c_s2:
-    st.markdown(f'<div class="pill-chip pill-green">Safe to skip: {skip_pct}%</div>', unsafe_allow_html=True)
+    render_html(f'<div class="pill-chip pill-green">Safe to skip: {skip_pct}%</div>')
 
 if not latest_alerts:
-    st.markdown('''
+    render_html("""
     <div style="text-align:center;padding:16px;color:var(--text-sub)">
         <div style="font-size:22px;margin-bottom:4px">🔕</div>
         <div style="font-size:12px">All quiet. We will ping you when it matters.</div>
     </div>
-    ''', unsafe_allow_html=True)
+    """)
 else:
     for alert in reversed(latest_alerts):
         sev = alert["severity"]
@@ -873,7 +864,7 @@ else:
             why_now = generate_alert_line_fallback(alert, st.session_state.language)
 
         pill_cls = "pill-red" if sev == "Hot" else ("pill-amber" if sev == "Rising" else "pill-green")
-        st.markdown(f'''
+        render_html(f"""
         <div class="alert-box">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px">
                 <div style="display:flex;align-items:center;gap:6px">
@@ -885,24 +876,24 @@ else:
             <div style="font-size:12px;color:var(--text-main);margin:3px 0 5px 0;line-height:1.4">{why_now}</div>
             <div style="font-size:11px;color:var(--text-sub);font-weight:600">Over {display_over} • {trigger.title()} • Just now</div>
         </div>
-        ''', unsafe_allow_html=True)
+        """)
 
     st.markdown('<div class="d11-primary-btn">', unsafe_allow_html=True)
     if st.button("🔴 Join Live Stream Now", key="join_live_feed_btn", use_container_width=True):
         st.toast("🎉 Joining watch-along stream! (demo)", icon="🏏")
     st.markdown('</div>', unsafe_allow_html=True)
 
-st.markdown('</div>', unsafe_allow_html=True)
+render_html('</div>')
 
 
 # ── F. Walk-In Ready Card (Feature 1) ───────────────────────────
-st.markdown('<div class="d11-card">', unsafe_allow_html=True)
-st.markdown('''
+render_html('<div class="d11-card">')
+render_html("""
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
     <span style="font-size:11px;font-weight:800;color:var(--text-muted);letter-spacing:0.6px;text-transform:uppercase">🚶 WALK-IN READY</span>
     <span class="pill-chip pill-muted">20s Catch-Up</span>
 </div>
-''', unsafe_allow_html=True)
+""")
 
 cur_over = current_ball["over"]
 cur_inn = current_ball["innings"]
@@ -930,29 +921,25 @@ if st.session_state.show_walkin_card and walkin_card:
     room_mood = walkin_card.get("room_mood", "Hyped")
     join_line = walkin_card.get("join_line", "Jump in!")
 
-    st.markdown(f'''
+    render_html(f"""
     <div style="background:var(--chat-bg);border:1.5px solid var(--accent-red);border-radius:14px;padding:12px;margin-top:10px">
         <div style="font-size:16px;font-weight:800;color:var(--text-main);margin-bottom:5px">{headline}</div>
         <div style="font-size:12px;color:var(--text-muted);line-height:1.5;margin-bottom:8px">{story}</div>
-
         <div style="margin-bottom:8px;background:var(--card-bg-solid);padding:7px 10px;border-radius:8px;border-left:3px solid var(--accent-gold)">
             <span style="font-size:10px;font-weight:800;color:var(--accent-gold);text-transform:uppercase">What Matters Now</span>
             <div style="font-size:12px;color:var(--text-main);font-weight:600">{what_matters}</div>
         </div>
-
         <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
             <span class="pill-chip pill-blue">👀 {watch_player.get("name", "")}: {watch_player.get("why", "")}</span>
             <span class="pill-chip pill-amber">🎭 {room_mood}</span>
         </div>
-
         <div style="font-size:12px;color:var(--text-main);font-weight:800;margin-bottom:10px">{join_line}</div>
-
         <div style="display:flex;justify-content:space-between;color:var(--text-sub);font-size:10px;margin-bottom:8px">
             <span>📖 Read in 20 seconds</span>
             <span>as of over {snap_over}</span>
         </div>
     </div>
-    ''', unsafe_allow_html=True)
+    """)
 
     st.markdown('<div class="d11-primary-btn">', unsafe_allow_html=True)
     if st.button("🏏 Join the Watch Along", key="join_walkin_inline_btn", use_container_width=True):
@@ -961,13 +948,13 @@ if st.session_state.show_walkin_card and walkin_card:
 
 # Ball 0 Pre-Match Card
 if bidx == 0:
-    st.markdown(f'''
+    render_html(f"""
     <div style="text-align:center;padding:12px;background:var(--chat-bg);border-radius:12px;border:1px solid var(--card-border);margin-top:8px">
         <div style="font-size:15px;font-weight:800;color:var(--text-main);margin-bottom:2px">🏏 {config.MATCH_TITLE}</div>
         <div class="score-sub">{config.MATCH_VENUE} • {config.MATCH_DATE}</div>
         <div style="margin-top:6px;font-size:12px;color:var(--accent-gold);font-weight:700">Toss: Pakistan won and opted to bat • Match about to begin!</div>
     </div>
-    ''', unsafe_allow_html=True)
+    """)
 
 # Innings Break Card
 if current_ball["innings"] == 2 and bidx == inn2_start:
@@ -976,25 +963,25 @@ if current_ball["innings"] == 2 and bidx == inn2_start:
     inn1_wkts = inn1_balls[-1]["cum_wkts"] if inn1_balls else 0
     best_moment = moments[0] if moments and moments[0]["innings"] == 1 else None
     best_txt = best_moment["reason"] if best_moment else "Action in death overs"
-    st.markdown(f'''
+    render_html(f"""
     <div style="text-align:center;padding:12px;background:var(--chat-bg);border-radius:12px;border:1px solid var(--accent-gold);margin-top:8px">
         <span class="pill-chip pill-amber" style="margin-bottom:4px">INNINGS BREAK</span>
         <div style="font-size:18px;font-weight:800;color:var(--text-main);margin:3px 0">Target: {inn1_total + 1} for India</div>
         <div class="score-sub">Pakistan finished at {inn1_total}/{inn1_wkts} in 20 overs</div>
         <div style="font-size:11px;color:var(--text-main);margin-top:4px">Innings 1 Landmark: <b>{best_txt}</b></div>
     </div>
-    ''', unsafe_allow_html=True)
+    """)
 
-st.markdown('</div>', unsafe_allow_html=True)
+render_html('</div>')
 
 
 # ── G. Chat Rewind & Vibe Meter (Feature 2) ────────────────────
-st.markdown('<div class="d11-card">', unsafe_allow_html=True)
-st.markdown('''
+render_html('<div class="d11-card">')
+render_html("""
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
     <span style="font-size:11px;font-weight:800;color:var(--text-muted);letter-spacing:0.6px;text-transform:uppercase">💬 CHAT REWIND & VIBE METER</span>
 </div>
-''', unsafe_allow_html=True)
+""")
 
 vibe, vibe_snap = get_vibe_for_over(current_ball["innings"], current_ball["over"])
 
@@ -1039,34 +1026,34 @@ if vibe:
     st.plotly_chart(gauge_fig, use_container_width=True, config={'displayModeBar': False})
 
     # Theme Chips
-    theme_chips_html = ''.join([f'<span class="pill-chip pill-blue">{t}</span>' for t in themes[:3]])
-    st.markdown(f'<div style="margin-bottom:8px;display:flex;gap:4px;flex-wrap:wrap">{theme_chips_html}</div>', unsafe_allow_html=True)
+    theme_chips_html = "".join([f'<span class="pill-chip pill-blue">{t}</span>' for t in themes[:3]])
+    render_html(f'<div style="margin-bottom:8px;display:flex;gap:4px;flex-wrap:wrap">{theme_chips_html}</div>')
 
     # Hottest Take Card
     hottest_msg = next((m for m in chat_data if m["id"] == hottest_id), None)
     if hottest_msg:
-        st.markdown(f'''
+        render_html(f"""
         <div class="d11-card-gold">
             <div style="font-size:10px;color:var(--accent-gold);font-weight:800;margin-bottom:2px">🔥 HOTTEST TAKE</div>
             <div style="font-size:11px;font-weight:700;color:#38BDF8">{hottest_msg["handle"]}</div>
             <div style="font-size:12px;color:var(--text-main);font-weight:500">{hottest_msg["text"]}</div>
         </div>
-        ''', unsafe_allow_html=True)
+        """)
 
     # Banter Tone & Abuse Blocked
-    st.markdown(f'''
+    render_html(f"""
     <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;align-items:center">
         <span class="pill-chip {"pill-amber" if banter_tone == "Heated" else "pill-green"}">{banter_tone} Tone</span>
         <span class="pill-chip pill-muted">🛡 Banter Guard: {abuse_count_total} blocked</span>
     </div>
-    ''', unsafe_allow_html=True)
+    """)
 
 # Latest 15 simulated messages
 chat_up_to = [m for m in chat_data if m["ball_idx"] <= bidx]
 latest_chat = chat_up_to[-15:] if chat_up_to else []
 
 if not latest_chat:
-    st.markdown('<div class="score-sub" style="text-align:center;padding:12px">Chat will appear as deliveries are bowled...</div>', unsafe_allow_html=True)
+    render_html('<div class="score-sub" style="text-align:center;padding:12px">Chat will appear as deliveries are bowled...</div>')
 else:
     for msg in latest_chat:
         is_abuse = msg.get("type") == "abuse"
@@ -1074,16 +1061,16 @@ else:
         db = msg.get("dreambucks", 0)
 
         if is_abuse:
-            st.markdown(f'''
+            render_html(f"""
             <details class="abuse-guard">
                 <summary>🛡 Message hidden by Banter Guard <span style="color:#38BDF8;font-size:10px;margin-left:4px">[Tap to Show]</span></summary>
                 <div style="margin-top:4px;padding-top:4px;border-top:1px solid var(--chat-border);color:var(--text-sub);font-style:italic;font-size:11px">
                     <span style="font-weight:700;color:#38BDF8">{msg["handle"]}:</span> {msg["text"]}
                 </div>
             </details>
-            ''', unsafe_allow_html=True)
+            """)
         elif is_pinned:
-            st.markdown(f'''
+            render_html(f"""
             <div class="chat-bubble-pinned">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
                     <span style="font-weight:700;color:#38BDF8;font-size:11px">{msg["handle"]}</span>
@@ -1091,26 +1078,26 @@ else:
                 </div>
                 <div style="color:var(--text-main);font-size:12px">{msg["text"]}</div>
             </div>
-            ''', unsafe_allow_html=True)
+            """)
         else:
-            st.markdown(f'''
+            render_html(f"""
             <div class="chat-bubble">
                 <span style="font-weight:700;color:#38BDF8;font-size:11px">{msg["handle"]}:</span>
                 <span style="color:var(--text-main);font-size:12px"> {msg["text"]}</span>
             </div>
-            ''', unsafe_allow_html=True)
+            """)
 
-st.markdown('</div>', unsafe_allow_html=True)
+render_html('</div>')
 
 
 # ── H. Footer & Information ────────────────────────────────────
-st.markdown('''
+render_html("""
 <div class="d11-footer">
     Simulated chat for demonstration purposes.<br>
     Independent prototype inspired by public information about Dream11 Watch Along.<br>
     Not an official Dream11 product.
 </div>
-''', unsafe_allow_html=True)
+""")
 
 with st.expander("ℹ️ How Watch-Along Copilot works"):
     st.markdown("""
