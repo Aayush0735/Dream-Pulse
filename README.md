@@ -154,7 +154,8 @@ cd "Dream11 Wake Me Up"
 pip install -r requirements.txt
 
 # 3. Launch application (no API keys or setup required!)
-streamlit run app.py
+python -m streamlit run app.py
+# or: streamlit run app.py
 ```
 
 Open `http://localhost:8501` in your browser.  
@@ -260,3 +261,4 @@ The repository comes pre-bundled with all verified data and caches. If you wish 
 Independent prototype inspired by public information about Dream11 Watch Along.  
 Not an official Dream11 product.  
 Chat and user handles are simulated.
+
