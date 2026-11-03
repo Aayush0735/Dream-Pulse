@@ -10,8 +10,6 @@
 
 ---
 
-## Check the Demo here: https://dreampulse.streamlit.app  
-
 ## 1. Mission & The Fan Problem
 
 Dream11 has evolved into a free-to-play, second-screen sports entertainment ecosystem. The core experience is **creator-led watch-alongs** where fans chat, send Shout Outs and gifts, spend DreamBucks, and follow stats alongside the stream.
